@@ -2,9 +2,9 @@
 File Name: MainMenuCameraPan.cs
 Purpose: Slowly rotate the main menu's camera to make it look cool and futuristicky
 Author: Heath Parkes (gargit@gargit.net)
-Modified: 20/3/2016
+Modified: 10/4/2016
 -----------------------------------------------------------
-Copyright 2016 AIE/HP
+Copyright 2016 LE/HP
 ---------------------------------------------------------*/
 
 using UnityEngine;
