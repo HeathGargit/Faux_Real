@@ -40,18 +40,4 @@ public class LevelManager : MonoBehaviour {
         m_Menus[2].SetActive(false);
         m_Menus[toMenu].SetActive(true);
     }
-    //this functions changes to/from a submenu
-    public void LoadLevelSelect()
-    {
-        m_MainMenu.SetActive(false);
-        m_CreditsMenu.SetActive(false);
-        m_LevelSelect.SetActive(true);
-    }
-
-    public void LoadMainMenu()
-    {
-        m_MainMenu.SetActive(true);
-        m_CreditsMenu.SetActive(false);
-        m_LevelSelect.SetActive(false);
-    }
 }
