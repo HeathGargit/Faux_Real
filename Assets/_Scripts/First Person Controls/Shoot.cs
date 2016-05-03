@@ -13,6 +13,14 @@ using System;
 
 public class Shoot : MonoBehaviour {
 
+    private string m_currentGun;
+    public float m_ShoveSpeed;
+
+    void Start()
+    {
+        m_currentGun = "Bubble";
+    }
+
 	void Update ()
     {
         //check if the "shoot" button is pushed.
@@ -33,7 +41,15 @@ public class Shoot : MonoBehaviour {
         Physics.Raycast(playerCam.position, playerCam.forward, out hitObject, 500f);
         if (hitObject.collider.tag == "Box")
         {
-            hitObject.collider.gameObject.GetComponent<BlockMovement>().SetFloatDown();
+            if (m_currentGun == "Bubble")
+            {
+                hitObject.collider.gameObject.GetComponent<BlockMovement>().SetFloatDown();
+            }
+            if (m_currentGun == "PushPull")
+            {
+                hitObject.collider.gameObject.GetComponent<Rigidbody>().AddForce(hitObject.normal);
+                Debug.Log(hitObject.normal);
+            }
         }
     }
 
