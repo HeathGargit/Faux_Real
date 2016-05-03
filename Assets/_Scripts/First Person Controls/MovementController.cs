@@ -1,16 +1,25 @@
-﻿using UnityEngine;
+﻿/*---------------------------------------------------------
+File Name: MovementController.cs
+Purpose: To move the player
+Authors: Heath Parkes (gargit@gargit.net), Liam Ellis (liam.ellis37@gmail.com)
+Modified: 30/4/2016
+-----------------------------------------------------------
+Copyright 2016 LE/HP
+---------------------------------------------------------*/
+
+using UnityEngine;
 using System.Collections;
 
 public class MovementController : MonoBehaviour {
 
-    //set the tank movement speeds. Public so they can be changed in the editor all easy like.
-    public float m_Speed = 12f;
-    public float m_TurnSpeed = 180f;
+    //set the player movement speeds. Public so they can be changed in the editor all easy like.
+    public float m_ForwardSpeed = 2f;
+    public float m_StrafeSpeed = 2f;
 
-    //variables to hold stuff to do with making the player turn
+    //variables to hold stuff to do with making the player move
     private Rigidbody m_Rigidbody;
     private float m_MovementInputValue;
-    private float m_TurnInputValue;
+    private float m_StrafeInputValue;
 
     private void Awake()
     {
@@ -18,59 +27,46 @@ public class MovementController : MonoBehaviour {
         m_Rigidbody = GetComponent<Rigidbody>();
     }
 
-    private void OnEnable()
+    /*private void OnEnable()
     {
         //when the player is turned on, make sure it is not kinematic
         m_Rigidbody.isKinematic = false;
 
         //also reset the input values
         m_MovementInputValue = 0f;
-        m_TurnInputValue = 0f;
+        m_StrafeInputValue = 0f;
     }
 
     private void OnDisable()
     {
         // when the player is turned off, set it to kinematic so it stops moving
         m_Rigidbody.isKinematic = true;
-    }
+    }*/
 
     private void Update()
     {
         //get the value of the inputs AKA find out if we turned/moved.
         m_MovementInputValue = Input.GetAxis("Vertical");
-        m_TurnInputValue = Input.GetAxis("Horizontal");
+        m_StrafeInputValue = Input.GetAxis("Horizontal");
     }
 
     private void FixedUpdate()
     {
-        //move and turn in the "physics" update
+        //move in the "physics" update
         Move();
-        Turn();
     }
 
     private void Move()
     {
         
         
-        //create a vector in the direction the player is facing with a magnatude
-        // based on the input, speed and time between frames
-        Vector3 movement = transform.forward * m_MovementInputValue * m_Speed * Time.deltaTime;
+        //create a vector with the direction the player is moving depending on keyboard input
+        Vector3 forward = transform.forward * m_MovementInputValue * m_ForwardSpeed * Time.deltaTime;
+        Vector3 strafe = transform.right * m_StrafeInputValue * m_StrafeSpeed * Time.deltaTime;
+
+        Vector3 movement = forward + strafe;
 
         //Apply this movement to the rigidbody's position
         m_Rigidbody.MovePosition(m_Rigidbody.position + movement);
-
-    }
-
-    private void Turn()
-    {
-        //Determine the number of degrees to be turned based on the input,
-        // speed and time between frames
-        float turn = m_TurnInputValue * m_TurnSpeed * Time.deltaTime;
-
-        //make this into a rotation on the y axis
-        Quaternion turnRotation = Quaternion.Euler(0f, turn, 0f);
-
-        // apply this rotation to the rigidbody's rotation
-        m_Rigidbody.MoveRotation(m_Rigidbody.rotation * turnRotation);
     }
 }
