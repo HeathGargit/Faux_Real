@@ -27,7 +27,6 @@ public class SwitchActivator : MonoBehaviour {
         //if the object that hit the switch was the box, then activate the level change teleporter!
         if (collisionedObject.gameObject.tag == "Box")
         {
-            Debug.Log("Switch got hit!");
             m_Teleporter.SetActive(true);
         }
     }
