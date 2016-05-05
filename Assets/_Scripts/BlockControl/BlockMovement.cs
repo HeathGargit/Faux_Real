@@ -25,6 +25,7 @@ public class BlockMovement : MonoBehaviour {
 
     void FixedUpdate()
     {
+        //pretty self explainitory. If the box is meant to be flaoting - make it float!!
         if (m_isFloating)
         {
             FloatUp();
