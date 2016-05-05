@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Mouse_Look : MonoBehaviour {
 
+    //variables to deal with mouse movement/sensetivity
     public float m_MouseSensitivity = 15F;
     public float minimumY = -60F;
     public float maximumY = 60F;

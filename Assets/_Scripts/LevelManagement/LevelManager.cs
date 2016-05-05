@@ -2,7 +2,7 @@
 File Name: LevelManager.cs
 Purpose: To manage moving between the levels and the main menu, and quitting.
 Author: Heath Parkes (gargit@gargit.net)
-Modified: 12/4/2016
+Modified: 5/5/2016
 -----------------------------------------------------------
 Copyright 2016 LE/HP
 ---------------------------------------------------------*/
@@ -13,11 +13,13 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour {
     
+    //setting objects up to be used to hold menus.
     public GameObject m_MainMenu, m_LevelSelect, m_CreditsMenu;
     GameObject[] m_Menus;
     
     private void Awake()
     {
+        //adds the menus into an array
         m_Menus = new GameObject[] { m_MainMenu, m_LevelSelect, m_CreditsMenu };
     }
 
@@ -33,6 +35,7 @@ public class LevelManager : MonoBehaviour {
         Application.Quit();
     }
 
+    //function show a particular menu. Used to transition betwen menus.
     public void MenuSelect(int toMenu)
     {
         m_Menus[0].SetActive(false);
