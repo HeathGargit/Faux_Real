@@ -16,6 +16,9 @@ public class PortalizationCombobulator : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        other.gameObject.transform.position = m_TargetPortal.transform.position;
+        if (other.tag == "Player")
+        {
+            other.gameObject.transform.position = m_TargetPortal.transform.position;
+        }
     }
 }

@@ -17,7 +17,10 @@ public class GoToNextLevel : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        if (other.tag == "Player")
+        {
             LoadLevel(m_NextLevel);
+        }
     }
 
     void LoadLevel(string targetLevel)

@@ -1,5 +1,13 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿/*---------------------------------------------------------
+File Name: Mouse_Look.cs
+Purpose: Provides Mouse Looking for the player
+Authors: Heath Parkes (gargit@gargit.net), Liam Ellis (liam.ellis37@gmail.com)
+Modified: 10/5/2016
+-----------------------------------------------------------
+Copyright 2016 LE/HP
+---------------------------------------------------------*/
+
+using UnityEngine;
 
 public class Mouse_Look : MonoBehaviour {
 
